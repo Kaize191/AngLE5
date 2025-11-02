@@ -1,0 +1,11 @@
+﻿CREATE OR ALTER PROCEDURE dbo.spPosts_List
+AS
+BEGIN
+  SET NOCOUNT ON;
+
+  SELECT p.Id, p.Title, p.Body, p.DateCreated,
+         u.UserName, u.FirstName, u.LastName
+  FROM dbo.Posts p
+  INNER JOIN dbo.Users u ON u.Id = p.UserId
+  ORDER BY p.Id DESC;
+END
